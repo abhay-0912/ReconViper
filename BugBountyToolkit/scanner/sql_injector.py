@@ -12,8 +12,13 @@ from urllib.parse import urljoin, urlparse, parse_qs, urlparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
+from colorama import Fore, Style, init
 from utils.logger import Logger
 from utils.proxy import ProxyManager
+from utils.form_parser import FormParser
+
+# Initialize colorama
+init(autoreset=True)
 
 
 class SQLInjector:
@@ -565,16 +570,23 @@ class SQLInjector:
             is_vulnerable = False
             
             if attack_type == 'error_based':
-                is_vulnerable = self._detect_error_based(response)
+                is_vulnerable = self._detect_error_based_sqli(response.text)
             elif attack_type == 'boolean_based':
                 # For boolean-based, we need to compare with original response
                 original_response = self._make_request(method, self.target_url, params={param_name: param_value} if method == 'GET' else None,
                                                     data={param_name: param_value} if method == 'POST' else None)
-                is_vulnerable = self._detect_boolean_based(response, original_response)
+                is_vulnerable = self._detect_boolean_based_sqli(original_response, response, None)
             elif attack_type == 'time_based':
-                is_vulnerable = self._detect_time_based(response)
+                # For time-based, we use response time
+                import time
+                start_time = time.time()
+                test_response = self._make_request(method, self.target_url, params={param_name: test_value} if method == 'GET' else None,
+                                                 data={param_name: test_value} if method == 'POST' else None)
+                response_time = time.time() - start_time
+                baseline_time = 1.0  # Assume 1 second baseline
+                is_vulnerable = self._detect_time_based_sqli(response_time, baseline_time)
             elif attack_type == 'union_based':
-                is_vulnerable = self._detect_union_based(response)
+                is_vulnerable = self._detect_union_based_sqli(response.text, payload)
             
             if is_vulnerable:
                 return {

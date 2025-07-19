@@ -140,3 +140,21 @@
 2025-07-19 21:22:10 - sql_injector - ERROR - logger.py:88 - Error testing id with union_based payload: 'SQLInjector' object has no attribute '_detect_union_based'
 2025-07-19 21:22:10 - sql_injector - ERROR - logger.py:88 - Error testing id with union_based payload: 'SQLInjector' object has no attribute '_detect_union_based'
 2025-07-19 21:22:12 - sql_injector - ERROR - logger.py:88 - Error testing id with union_based payload: 'SQLInjector' object has no attribute '_detect_union_based'
+2025-07-19 21:28:32 - sql_injector - INFO - logger.py:80 - Loaded 46 payloads - Error: 8, Boolean: 16, Time: 6, Union: 16
+2025-07-19 21:28:32 - sql_injector - INFO - logger.py:80 - Starting SQL injection scan on https://httpbin.org/get?id=1
+2025-07-19 21:28:41 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:41 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:41 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:41 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:42 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:45 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:45 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:46 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:46 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:46 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:49 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:49 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:50 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:50 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:50 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
+2025-07-19 21:28:55 - sql_injector - ERROR - logger.py:88 - Error testing id with boolean_based payload: object of type 'Response' has no len()
